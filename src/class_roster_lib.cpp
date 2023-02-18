@@ -165,47 +165,19 @@ namespace ctch1330
 	}
 }
 
-
-/* Side note: 
-Below is an example of Doxygen comment, which can be thought as an enhancement of a regular comment. 
-You probably noticed triple slash instead of usual double, also, various keywords starting with @.
-
-Such comments can adorn various types and members and with use of respective tools 
-can be converted in developer documentation (instead of writing documentation separately and from scratch). 
-
-They also can also be picked up by tools like VS Code to provide integrated experience. 
-For instance hover mouse over line in GetUserInputWithinIntegerRange() where this function is called from,
-you will see a tooltip appearing, displaying functionality, expected input and output. 
-Such "intellisense" tooltips are extremely valuable when you need to use
-external libraries and need quick summary of what function there does and how to use it.
-
-Obviously, as with regular comment, this has no impact on compiler of program execution,
-it’s only meant to help readability and developer’s understanding. 
-
-There are number of technologies that allow such enhanced commenting. 
-You can read more about this particular one at https://www.doxygen.nl/index.html */
-
-
-/// @brief function is validating user input, making sure a valid integer input was submitted by the user
-/// @param min minimum acceptable valued
-/// @param max maximum acceptable value
-/// @param user_input actual value submitted by the user
-/// @return boolean part is true if input was valid, and false if input was invalid. there is also an error message part, that's empty for valid scenario and contains error message for invalid scenario
 tuple<bool, string> ctch1330::ValidateUserInputWithinIntegerRange(const int min, const int max, const int user_input)
 {
-	// function contains two bugs. they need to be identified and fixed for unit tests to pass. 	
-	// next line would be a good place to put a break point
 	if 
 	( 
 		!cin
-		|| user_input < 1
-		|| user_input > ctch1330::roster.size() 
+		|| user_input < min
+		|| user_input > max 
 	)
 	{
-		return {true, "Please enter integer within the range of current roster"};
+		return {false, "Please enter integer within the range of current roster"};
 	}
 	else 
 	{
-		return {false, ""};
+		return {true, ""};
 	}
 }

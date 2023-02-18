@@ -11,14 +11,14 @@ TEST_CASE("Roster functionality test", "[autograding]")
 
 	SECTION("Valid Input")
 	{
-		auto [is_valid, validation_message] = ctch1330::ValidateUserInputWithinIntegerRange(1, 10, 9);
+		auto [is_valid, validation_message] = ctch1330::ValidateUserInputWithinIntegerRange(1, 6, 3);
 		REQUIRE(is_valid == true);
 		REQUIRE(validation_message == "");
 	}
 
 	SECTION("Invalid Input")
 	{
-		auto [is_valid, validation_message] = ctch1330::ValidateUserInputWithinIntegerRange(1, 3, 4);
+		auto [is_valid, validation_message] = ctch1330::ValidateUserInputWithinIntegerRange(1, 6, 9);
 		REQUIRE(is_valid == false);
 		REQUIRE(validation_message == "Please enter integer within the range of current roster");
 	}
